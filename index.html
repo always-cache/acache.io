@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<meta charSet="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+  <title>acache.io - 100% cache hit rate at the edge</title>
+</head>
+<style>
+  :root {
+    --nord0: #2e3440;
+    --nord1: #3b4252;
+    --nord2: #434c5e;
+    --nord3: #4c566a;
+    --nord4: #d8dee9;
+    --nord5: #e5e9f0;
+    --nord6: #eceff4;
+    --nord7: #8fbcbb;
+    --nord8: #88c0d0;
+    --nord9: #81a1c1;
+    --nord10: #5e81ac;
+    --nord11: #bf616a;
+    --nord12: #d08770;
+    --nord13: #ebcb8b;
+    --nord14: #a3be8c;
+    --nord15: #b48ead;
+
+    --color-bg: var(--nord0);
+    --color-fg: var(--nord6);
+    --color-body: var(--nord1);
+    --color-accent: var(--nord11);
+
+    --font-text: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+    --font-heading: var(--font-mono);
+    --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+
+    --max-width: 600px;
+    --margin: 2rem;
+    --margin-extra: max(calc(var(--margin) * 4), 20vh);
+    --margin-more: calc(var(--margin) * 4);
+    --margin-double: calc(var(--margin) * 2);
+    --margin-half: calc(var(--margin) / 2);
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-text);
+    background: var(--color-body);
+    color: var(--color-fg);
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-heading);
+  }
+
+  header {
+    background: var(--color-bg);
+    padding: var(--margin-extra) clamp(2rem, -6rem + 20vw, 6rem);
+    contain: layout;
+  }
+
+  h1,
+  h1+p {
+    max-width: max-content;
+    margin-inline: auto;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 2rem + 2.5vw, 5rem);
+  }
+
+  header p {
+    font-size: clamp(1.25rem, 1.15rem + 0.5vw, 1.75rem);
+    line-height: 1.75;
+  }
+
+  code {
+    background: var(--color-accent);
+    font-weight: 700;
+    padding: 0.25ch 0.5ch;
+    margin-inline-end: 0.5ch;
+  }
+
+  main {
+    padding-inline: max(var(--margin), calc(50% - var(--max-width) / 2));
+    line-height: 1.5;
+  }
+
+  h2 {
+    text-align: center;
+    font-family: var(--font-heading);
+    margin-block: var(--margin-more) var(--margin-double);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5em;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--margin);
+  }
+
+  li {
+    background: var(--color-bg);
+    padding: var(--margin);
+  }
+
+  li :first-child {
+    margin-top: 0;
+  }
+
+  li :last-child {
+    margin-bottom: 0;
+  }
+
+  strong {
+    text-align: center;
+    display: block;
+    margin-block: var(--margin-double) var(--margin-extra);
+  }
+
+  a {
+    color: inherit;
+    font-family: var(--font-heading);
+  }
+</style>
+
+<body>
+  <header>
+    <h1>Cache everything. Always.</h1>
+    <p>
+      <code>acache.io</code>
+      is a new type of CDN enabling a 100% cache hit rate at the edge
+    </p>
+  </header>
+  <main>
+    <h2>Use cases</h2>
+    <ul>
+      <li>
+        <h3>Create a static version of your site</h3>
+        <p>We never evict (invalidate in HTTP caching speak) content from the cache. Rather, all content is kept in the
+          cache until instructed otherwise. This means you can e.g. take your origin server completely offline without
+          worrying about the availability of your site.</p>
+        <em>Example customer: SaaS company spinning up their WordPress instance about once per month to make changes to
+          their marketing site.</em>
+      </li>
+      <li>
+        <h3>Cache complex queries and API responses</h3>
+        <p>We cache all read requests - including POST requests that only read content. If a response is the same every
+          time and causes no side effects, it will be served from cache. This means you can enjoy lightning-fast speeds
+          even for e.g. GraphQL queries and complex API requests.</p>
+        <em>Example customer: 3D modeling company caching gigabytes of renders based on dozens of different inputs.</em>
+      </li>
+      <li>
+        <h3>Update dynamic content on demand</h3>
+        <p>Sometimes content or data changes, in which case we update the cache where needed. The next time someone
+          requests the changed content, the updates will already be in the cache. This means you can cache even the most
+          dynamic content while always keeping everything up to date.</p>
+        <em>Example customer: Financial services company keeping their customer portal with slow 3rd party dependencies
+          entirely in cache.</em>
+      </li>
+    </ul>
+    <h2>Join the waitlist</h2>
+    <p>We tailor our solution for each customer. Email us and we will make sure you get the network performace you need.
+      And some much deserved rest for your server!</p>
+    <strong><a href="mailto:team@acache.io">team@acache.io</a></strong>
+  </main>
+</body>
+
+</html>
