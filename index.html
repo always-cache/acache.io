@@ -96,7 +96,12 @@
     padding-bottom: 0.5em;
   }
 
-  ul {
+  a {
+    color: inherit;
+    font-family: var(--font-heading);
+  }
+
+  .cards {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -104,28 +109,35 @@
     gap: var(--margin);
   }
 
-  li {
+  .cards__card {
     background: var(--color-bg);
     padding: var(--margin);
   }
 
-  li :first-child {
+  .cards__card :first-child {
     margin-top: 0;
   }
 
-  li :last-child {
+  .cards__card :last-child {
     margin-bottom: 0;
   }
 
-  strong {
+  .cta {
     text-align: center;
     display: block;
-    margin-block: var(--margin-double) var(--margin-extra);
+    margin-block: var(--margin-double) var(--margin-more);
   }
 
-  a {
-    color: inherit;
-    font-family: var(--font-heading);
+  footer {
+    background: var(--color-bg);
+    padding: var(--margin-double);
+  }
+
+  .links {
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 </style>
 
@@ -139,8 +151,8 @@
   </header>
   <main>
     <h2>Use cases</h2>
-    <ul>
-      <li>
+    <ul class="cards">
+      <li class="cards__card">
         <h3>Create a static version of your site</h3>
         <p>We never evict (invalidate in HTTP caching speak) content from the cache. Rather, all content is kept in the
           cache until instructed otherwise. This means you can e.g. take your origin server completely offline without
@@ -148,14 +160,14 @@
         <em>Example customer: SaaS company spinning up their WordPress instance about once per month to make changes to
           their marketing site.</em>
       </li>
-      <li>
+      <li class="cards__card">
         <h3>Cache complex queries and API responses</h3>
         <p>We cache all read requests - including POST requests that only read content. If a response is the same every
           time and causes no side effects, it will be served from cache. This means you can enjoy lightning-fast speeds
           even for e.g. GraphQL queries and complex API requests.</p>
         <em>Example customer: 3D modeling company caching gigabytes of renders based on dozens of different inputs.</em>
       </li>
-      <li>
+      <li class="cards__card">
         <h3>Update dynamic content on demand</h3>
         <p>Sometimes content or data changes, in which case we update the cache where needed. The next time someone
           requests the changed content, the updates will already be in the cache. This means you can cache even the most
@@ -167,8 +179,13 @@
     <h2>Join the waitlist</h2>
     <p>We tailor our solution for each customer. Email us and we will make sure you get the network performace you need.
       And some much deserved rest for your server!</p>
-    <strong><a href="mailto:team@acache.io">team@acache.io</a></strong>
+    <strong class="cta"><a href="mailto:team@acache.io">team@acache.io</a></strong>
   </main>
+  <footer>
+    <ul class="links">
+      <li><a href="https://status.acache.io/">Status</a></li>
+    </ul>
+  </footer>
 </body>
 
 </html>
