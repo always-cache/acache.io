@@ -46,7 +46,7 @@
     padding: 0;
     margin: 0;
     font-family: var(--font-text);
-    background: var(--color-body);
+    background: var(--color-bg);
     color: var(--color-fg);
   }
 
@@ -86,6 +86,8 @@
   main {
     padding-inline: max(var(--margin), calc(50% - var(--max-width) / 2));
     line-height: 1.5;
+    background: var(--color-body);
+    contain: layout;
   }
 
   h2 {
