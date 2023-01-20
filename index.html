@@ -124,6 +124,44 @@
     margin-bottom: 0;
   }
 
+  form {
+    text-align: center;
+    font-size: 1.125em;
+    margin-block: var(--margin-double);
+  }
+
+  form p {
+    margin-block: var(--margin-half);
+  }
+
+  input {
+    border: 1px solid var(--color-fg);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    text-decoration: none;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-heading);
+    margin: ;
+    margin-block: var(--margin-half);
+    font-size: 1rem;
+    min-width: 60%;
+  }
+
+  button {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    background: var(--nord14);
+    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+  }
+
   .cta {
     text-align: center;
     display: block;
@@ -133,6 +171,7 @@
   footer {
     background: var(--color-bg);
     padding: var(--margin-double);
+    text-align: center;
   }
 
   .links {
@@ -181,9 +220,22 @@
           entirely in cache.</em>
       </li>
     </ul>
-    <h2>Join the waitlist</h2>
-    <p>We tailor our solution for each customer. Email us and we will make sure you get the network performace you need.
-      And some much deserved rest for your server!</p>
+    <h2>Try it out</h2>
+    <p>Test how your site (or API) performs when it gets the performance boost of the acache CDN!</p>
+    <form action="https://dash.acache.io" method="POST">
+      <input type="hidden" name="default-rules" value="yes">
+      <label>
+        Origin (i.e. server URL)
+        <br>
+        <input type="text" name="origin" placeholder="https://mysite.com">
+      </label>
+      <p>
+        <button type="submit">Launch</button>
+      </p>
+    </form>
+    <h2>Contact</h2>
+    <p>We are committed to finding the best solution for everyone. Email us and we will make sure you get the network performace you need.
+      And some much deserved rest for your server.</p>
     <strong class="cta"><a href="mailto:team@acache.io">team@acache.io</a></strong>
   </main>
   <footer>
@@ -191,6 +243,9 @@
       <li><a href="https://status.acache.io/">Status</a></li>
       <li><a href="https://tests.acache.io/">Tests</a></li>
     </ul>
+    <p>
+      <a href="mailto:team@acache.io">team@acache.io</a>
+    </p>
   </footer>
 </body>
 
