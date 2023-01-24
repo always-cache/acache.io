@@ -55,7 +55,7 @@
 
   h1,
   h2,
-  main > h3 {
+  main>h3 {
     font-family: var(--font-heading);
   }
 
@@ -107,7 +107,6 @@
 
   a {
     color: inherit;
-    font-family: var(--font-heading);
   }
 
   .center {
@@ -140,11 +139,11 @@
     padding: clamp(2rem, 1rem + 5vw, 3rem);
   }
 
-  .card > :first-child {
+  .card> :first-child {
     margin-top: 0;
   }
 
-  .card > :last-child {
+  .card> :last-child {
     margin-bottom: 0;
   }
 
@@ -214,13 +213,24 @@
     font-size: 1rem;
   }
 
+  details {
+    margin-block: var(--margin);
+  }
+
+  summary {
+    font-size: 1.125rem;
+    cursor: pointer;
+  }
+
   .cta {
+    font-family: var(--font-heading);
     text-align: center;
     display: block;
     margin-block: var(--margin-double) var(--margin-more);
   }
 
   footer {
+    font-family: var(--font-heading);
     background: var(--color-bg);
     padding: var(--margin-double);
     text-align: center;
@@ -250,15 +260,19 @@
     <ul class="cards">
       <li class="card">
         <h3>Proactive caching</h3>
-        <p>Your content is always fresh in the cache. Instead of purging expiring content, it is updated from the origin. Your content is always served from the cache - and always fresh.</p>
+        <p>Your content is always fresh in the cache. Instead of purging expiring content, it is updated from the
+          origin. Your content is always served from the cache - and always fresh.</p>
       </li>
       <li class="card">
         <h3>On-demand updates</h3>
-        <p>When content is updated, you can notify our CDN of the changes either via special HTTP headers or PURGE requests. Or just update everything at once when your are finished with your changes.</p>
+        <p>When content is updated, you can notify our CDN of the changes either via special HTTP headers or PURGE
+          requests. Or just update everything at once when your are finished with your changes.</p>
       </li>
       <li class="card">
         <h3>Cache everything</h3>
-        <p>All of your content is cached according to the HTTP caching specification (RFC 9111). But you also have the possibility to cache any other request, such as POST requests. So you can cache e.g. your GraphQL queries or complex POST calculations.</p>
+        <p>All of your content is cached according to the HTTP caching specification (RFC 9111). But you also have the
+          possibility to cache any other request, such as POST requests. So you can cache e.g. your GraphQL queries or
+          complex POST calculations.</p>
       </li>
     </ul>
     <h3 class="center">Other features</h3>
@@ -328,6 +342,40 @@
         <button type="submit">Launch</button>
       </p>
     </form>
+    <h2>Frequently Asked</h2>
+    <details class="card">
+      <summary>I'm trying out your CDN, but my PageSpeed Insights performance score doesn't change - why?</summary>
+      <p>
+        In short, because the tests do not really measure network performance. Also, site performance depends on a lot of other factors as well, such as the amount of images and JavaScript loaded.
+      </p>
+      <p>
+        PageSpeed Insights (i.e. Lighthouse) and other similar tools artificially slow down the network while testing a site, so you won't necessarily see the (very real) network performance improvements in these tools. The best way to test your site is to simply browse it yourself and see the difference.
+      </p>
+      <p>
+        One way to see the network performance of your site is to check the Chrome User Experience reports (CrUX) e.g. by checking your site on <a href="https://pagespeed.web.dev" target="_blank">PageSpeed Insights</a>. A Content Delivery Network will directly impact the "Time To First Byte (TTFB)" metric seen in under "Discover what your real users are experiencing". This metric shows how long it takes your server to start responding to a real user request, and improvements here will translate to better performance directly.
+      </p>
+    </details>
+    <details class="card">
+      <summary>How can I be sure that my site will always be online after I switch to acache.io?</summary>
+      <p>
+        You don't. Sometimes entire networks or datacenters go down, and this is no different for acache.io. However, we have servers all around the world, many layers of monitoring, and many layers of fallbacks in case of issues. Our servers are located in the most secure and reliable datacenters available.
+      </p>
+      <p>
+        You can always check our <a href="https://status.acache.io" target="_blank">status page</a>, which has a live view of the status of our network, along with past incidents. We believe in transparency and will list all small and large incidents there (in fact, incidents are automatically created and listed on the status page even for a single missed check). If you need 24/7 support <a href="mailto:team@acache.io">contact us</a> to get on our custom pricing plan.
+      </p>
+    </details>
+    <details class="card">
+      <summary>How do I know my forms won't stop working or you won't cache pages for logged in users?</summary>
+      <p>
+        Our caching system is compliant with the HTTP caching standard (<a href="https://www.rfc-editor.org/rfc/rfc9111" target="_blank">RFC 9111</a>), which means we do not cache things your server tells us not to cache. As a general rule, things that cause side effects (e.g. change data, interact with another system such as email signups, and so on) are never served from the cache. Authenticated requests (with the "Authentication" HTTP header) are also never served from cache, and servers such as WordPress will tell us in the response not to cache responses that are authenticated via a cookie - e.g. the admin pages.
+      </p>
+      <p>
+        Having said that, it is of course possible that servers do not follow the HTTP standards, which might lead to caching content that should not be cached. In these cases you can leverage our Page Rules to manually add the desired caching behavior for any page or other URL.
+      </p>
+      <p>
+        Please see our <a href="https://tests.acache.io" target="_blank">HTTP caching test results</a> and see for yourself how the acache.io caching engine stacks up. The tests are created by Mark Nottingham, a co-author of the HTTP caching specification, and is the same exact test suite available at <a href="https://cache-tests.fyi" target="_blank">cache-tests.fyi</a> - just with our caching engine `Always-Cache` added.
+      </p>
+    </details>
     <h2>Contact</h2>
     <p>We are committed to finding the best solution for everyone. Email us and we will make sure you get the network
       performace you need. And some much deserved rest for your server.</p>
