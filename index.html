@@ -9,6 +9,7 @@
 <style>
   :root {
     --nord0: #2e3440;
+    --nord0-a: #2e344080;
     --nord1: #3b4252;
     --nord2: #434c5e;
     --nord3: #4c566a;
@@ -34,12 +35,14 @@
     --font-heading: var(--font-mono);
     --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 
-    --max-width: 600px;
+    --max-width: 1080px;
     --margin: 2rem;
     --margin-extra: max(calc(var(--margin) * 4), 20vh);
     --margin-more: calc(var(--margin) * 4);
     --margin-double: calc(var(--margin) * 2);
     --margin-half: calc(var(--margin) / 2);
+
+    --shadow: 0 0.25rem 0.5rem var(--nord0-a);
   }
 
   body {
@@ -51,7 +54,8 @@
   }
 
   h1,
-  h2 {
+  h2,
+  main > h3 {
     font-family: var(--font-heading);
   }
 
@@ -92,10 +96,13 @@
 
   h2 {
     text-align: center;
-    font-family: var(--font-heading);
     margin-block: var(--margin-more) var(--margin-double);
-    border-bottom: 2px solid var(--color-accent);
+    border-bottom: 1px solid var(--color-accent);
     padding-bottom: 0.5em;
+  }
+
+  h3 {
+    margin-block: var(--margin-double) var(--margin);
   }
 
   a {
@@ -103,25 +110,70 @@
     font-family: var(--font-heading);
   }
 
+  .center {
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
   .cards {
     margin: 0;
     padding: 0;
     list-style: none;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: var(--margin);
   }
 
-  .cards__card {
+  .card {
     background: var(--color-bg);
     padding: var(--margin);
+    box-shadow: var(--shadow);
   }
 
-  .cards__card :first-child {
+  .card--alt {
+    background: var(--nord4);
+    color: var(--nord0);
+    box-shadow: 0 0.75rem 1rem var(--nord0);
+    padding: 2rem;
+    padding: clamp(2rem, 1rem + 5vw, 3rem);
+  }
+
+  .card > :first-child {
     margin-top: 0;
   }
 
-  .cards__card :last-child {
+  .card > :last-child {
     margin-bottom: 0;
+  }
+
+  .price-list {
+    --columns: auto;
+    --number-justify: auto;
+    --width: 100%;
+  }
+
+  @media (min-width: 450px) {
+    .price-list {
+      --columns: 1fr max-content;
+      --number-justify: end;
+      --width: auto;
+    }
+  }
+
+  .price-list {
+    font-size: 1.125rem;
+    display: grid;
+    gap: var(--margin-half);
+    margin-bottom: var(--margin);
+    grid-template-columns: var(--columns);
+    width: var(--width);
+  }
+
+  .price-list dd {
+    justify-self: var(--number-justify);
+    margin: 0;
   }
 
   form {
@@ -146,6 +198,7 @@
     margin-block: var(--margin-half);
     font-size: 1rem;
     min-width: 60%;
+    box-shadow: var(--shadow);
   }
 
   button {
@@ -186,16 +239,59 @@
 
 <body>
   <header>
-    <h1>Cache everything. Always.</h1>
+    <h1>Proactive caching for the web</h1>
     <p>
       <code>acache.io</code>
       is a new type of CDN enabling a 100% cache hit rate at the edge
     </p>
   </header>
   <main>
+    <h2>Features</h2>
+    <ul class="cards">
+      <li class="card">
+        <h3>Proactive caching</h3>
+        <p>Your content is always fresh in the cache. Instead of purging expiring content, it is updated from the origin. Your content is always served from the cache - and always fresh.</p>
+      </li>
+      <li class="card">
+        <h3>On-demand updates</h3>
+        <p>When content is updated, you can notify our CDN of the changes either via special HTTP headers or PURGE requests. Or just update everything at once when your are finished with your changes.</p>
+      </li>
+      <li class="card">
+        <h3>Cache everything</h3>
+        <p>All of your content is cached according to the HTTP caching specification (RFC 9111). But you also have the possibility to cache any other request, such as POST requests. So you can cache e.g. your GraphQL queries or complex POST calculations.</p>
+      </li>
+    </ul>
+    <h3 class="center">Other features</h3>
+    <ul class="center">
+      <li>100% SLA</li>
+      <li>HTTP/2</li>
+      <li>Automatic SSL</li>
+      <li>Page Rules</li>
+      <li>Instant purge</li>
+      <li>CNAME configuration (with redirects)</li>
+      <li>Root domain configuration</li>
+      <li>HTTP caching standard compliance</li>
+      <li>Brotli compression <em>(coming soon)</em></li>
+      <li>Image optimization <em>(coming soon)</em></li>
+      <li>IPv6 <em>(coming soon)</em></li>
+    </ul>
+    <h2>Pricing</h2>
+    <div class="card card--alt center">
+      <dl class="price-list">
+        <dt>Outgoing traffic</dt>
+        <dd><strong>0.05 € / GB</strong></dd>
+        <dt>Storage (after 50 GB)</dt>
+        <dd><strong>2 € / GB</strong></dd>
+        <dt>Root domain CDN</dt>
+        <dd><strong>5 € / mo</strong></dd>
+      </dl>
+      <p class="center">
+        <strong>Minimum 5 € / mo</strong>
+      </p>
+    </div>
     <h2>Use cases</h2>
     <ul class="cards">
-      <li class="cards__card">
+      <li class="card">
         <h3>Create a static version of your site</h3>
         <p>We never evict (invalidate in HTTP caching speak) content from the cache. Rather, all content is kept in the
           cache until instructed otherwise. This means you can e.g. take your origin server completely offline without
@@ -203,14 +299,14 @@
         <em>Example customer: SaaS company spinning up their WordPress instance about once per month to make changes to
           their marketing site.</em>
       </li>
-      <li class="cards__card">
+      <li class="card">
         <h3>Cache complex queries and API responses</h3>
         <p>We cache all read requests - including POST requests that only read content. If a response is the same every
           time and causes no side effects, it will be served from cache. This means you can enjoy lightning-fast speeds
           even for e.g. GraphQL queries and complex API requests.</p>
         <em>Example customer: 3D modeling company caching gigabytes of renders based on dozens of different inputs.</em>
       </li>
-      <li class="cards__card">
+      <li class="card">
         <h3>Update dynamic content on demand</h3>
         <p>Sometimes content or data changes, in which case we update the cache where needed. The next time someone
           requests the changed content, the updates will already be in the cache. This means you can cache even the most
@@ -220,7 +316,7 @@
       </li>
     </ul>
     <h2>Try it out</h2>
-    <p>Test how your site (or API) performs when it gets the performance boost of the acache CDN!</p>
+    <p class="center">Test how your site (or API) performs when it gets the performance boost of the acache CDN!</p>
     <form action="https://dash.acache.io" method="POST">
       <input type="hidden" name="default-rules" value="yes">
       <label>
