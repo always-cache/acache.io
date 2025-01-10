@@ -147,72 +147,6 @@
     margin-bottom: 0;
   }
 
-  .price-list {
-    --columns: auto;
-    --number-justify: auto;
-    --width: 100%;
-  }
-
-  @media (min-width: 450px) {
-    .price-list {
-      --columns: 1fr max-content;
-      --number-justify: end;
-      --width: auto;
-    }
-  }
-
-  .price-list {
-    font-size: 1.125rem;
-    display: grid;
-    gap: var(--margin-half);
-    margin-bottom: var(--margin);
-    grid-template-columns: var(--columns);
-    width: var(--width);
-  }
-
-  .price-list dd {
-    justify-self: var(--number-justify);
-    margin: 0;
-  }
-
-  form {
-    text-align: center;
-    font-size: 1.125em;
-    margin-block: var(--margin-double);
-  }
-
-  form p {
-    margin-block: var(--margin-half);
-  }
-
-  input {
-    border: 1px solid var(--color-fg);
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    display: inline-block;
-    text-decoration: none;
-    background: var(--color-bg);
-    color: var(--color-fg);
-    font-family: var(--font-heading);
-    margin-block: var(--margin-half);
-    font-size: 1rem;
-    min-width: 60%;
-    box-shadow: var(--shadow);
-  }
-
-  button {
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    display: inline-block;
-    text-decoration: none;
-    cursor: pointer;
-    background: var(--nord14);
-    font-weight: 600;
-    font-family: var(--font-heading);
-    font-size: 1rem;
-  }
-
   details {
     margin-block: var(--margin);
   }
@@ -228,30 +162,13 @@
     display: block;
     margin-block: var(--margin-double) var(--margin-more);
   }
-
-  footer {
-    font-family: var(--font-heading);
-    background: var(--color-bg);
-    padding: var(--margin-double);
-    text-align: center;
-  }
-
-  .links {
-    text-align: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: var(--margin-half);
-  }
 </style>
 
 <body>
   <header>
     <h1>Proactive caching for the web</h1>
     <p>
-      <code>acache.io</code>
+      <code>acache</code>
       is a new type of CDN enabling a 100% cache hit rate at the edge
     </p>
   </header>
@@ -277,7 +194,6 @@
     </ul>
     <h3 class="center">Other features</h3>
     <ul class="center">
-      <li>100% SLA</li>
       <li>HTTP/2</li>
       <li>Automatic SSL</li>
       <li>Page Rules</li>
@@ -288,29 +204,6 @@
       <li>Brotli compression <em>(coming soon)</em></li>
       <li>Image optimization <em>(coming soon)</em></li>
       <li>IPv6 <em>(coming soon)</em></li>
-    </ul>
-    <h2>Pricing</h2>
-    <div class="card card--alt center">
-      <dl class="price-list">
-        <dt>Outgoing traffic</dt>
-        <dd><strong>0.05 € / GB</strong></dd>
-        <dt>Storage (after 50 GB)</dt>
-        <dd><strong>2 € / GB</strong></dd>
-        <dt>Root domain CDN</dt>
-        <dd><strong>5 € / mo</strong></dd>
-      </dl>
-      <p class="center">
-        <strong>Minimum 5 € / mo</strong>
-      </p>
-    </div>
-    <h3 class="center">Custom Plan</h3>
-    <p class="center"><a href="mailto:team@acache.io">Contact us</a> for even more features!</p>
-    <ul class="center">
-      <li>24/7 support</li>
-      <li>Caching POST requests</li>
-      <li>Log forwarding</li>
-      <li>Custom PoP locations</li>
-      <li>Cache storage control (LRU on rules-based eviction)</li>
     </ul>
     <h2>Use cases</h2>
     <ul class="cards">
@@ -338,19 +231,6 @@
           entirely in cache.</em>
       </li>
     </ul>
-    <h2>Try it out</h2>
-    <p class="center">Test how your site (or API) performs when it gets the performance boost of the acache CDN!</p>
-    <form action="https://dash.acache.io" method="POST">
-      <input type="hidden" name="default-rules" value="yes">
-      <label>
-        Origin (i.e. server URL)
-        <br>
-        <input type="url" name="origin" placeholder="https://mysite.com" required>
-      </label>
-      <p>
-        <button type="submit">Launch</button>
-      </p>
-    </form>
     <h2>Frequently Asked</h2>
     <details class="card">
       <summary>I'm trying out your CDN, but my PageSpeed Insights performance score doesn't change - why?</summary>
@@ -379,13 +259,6 @@
         Our servers are located in the most secure and reliable datacenters available. We do have a 100% uptime
         guarantee (Service Level Agreement), and if we do not hit that we'll pay you back x10.
       </p>
-      <p>
-        You can always check our <a href="https://status.acache.io" target="_blank">status page</a>, which has a live
-        view of the status of our network, along with past incidents. We believe in transparency and will list all small
-        and large incidents there (in fact, incidents are automatically created and listed on the status page even for a
-        single missed check). If you need 24/7 support <a href="mailto:team@acache.io">contact us</a> to get on our
-        custom pricing plan.
-      </p>
     </details>
     <details class="card">
       <summary>How do I know my forms won't stop working or you won't cache pages for logged in users?</summary>
@@ -402,27 +275,10 @@
         caching content that should not be cached. In these cases you can leverage our Page Rules to manually add the
         desired caching behavior for any page or other URL.
       </p>
-      <p>
-        Please see our <a href="https://tests.acache.io" target="_blank">HTTP caching test results</a> and see for
-        yourself how the acache.io caching engine stacks up. The tests are created by Mark Nottingham, a co-author of
-        the HTTP caching specification, and is the same exact test suite available at <a href="https://cache-tests.fyi"
-          target="_blank">cache-tests.fyi</a> - just with our caching engine `Always-Cache` added.
-      </p>
     </details>
     <h2>Contact</h2>
-    <p>We are committed to finding the best solution for everyone. Email us and we will make sure you get the network
-      performace you need. And some much deserved rest for your server.</p>
-    <strong class="cta"><a href="mailto:team@acache.io">team@acache.io</a></strong>
+    <strong class="cta"><a href="mailto:me@ericselin.dev">me@ericselin.dev</a></strong>
   </main>
-  <footer>
-    <ul class="links">
-      <li><a href="https://status.acache.io/">Status</a></li>
-      <li><a href="https://tests.acache.io/">Tests</a></li>
-    </ul>
-    <p>
-      <a href="mailto:team@acache.io">team@acache.io</a>
-    </p>
-  </footer>
 </body>
 
 </html>
